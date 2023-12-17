@@ -19,5 +19,14 @@ input{
   color: #fff;
   border: 1px solid #747bff;
   border-radius: 4px;
+}
+
+.form-control {
   margin-bottom: 20px;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  text-align: left;
 }
