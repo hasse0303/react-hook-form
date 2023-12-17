@@ -5,12 +5,9 @@ export const YouTubeForm = () => {
 
     const form = useForm();
     const { register, control } = form;
-    // const { name, ref, onChange, onBlur } = register('username');
   return (
     <div>
         <form action="">
-            {/* <label htmlFor="username">Username</label>
-            <input type="text" id='username' name={name} ref={ref} onChange={onChange} onBlur={onBlur} /> */}
             <label htmlFor="username">Username</label>
             <input type="text" id='username' {...register('username')} />
 
