@@ -22,7 +22,7 @@ export const YouTubeForm = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control">
                 <label htmlFor="username">Username</label>
-                <input type="text" id='username' {...register('username', {
+                <input type="text" placeholder="Username" id='username' {...register('username', {
                     required: {
                         value: true,
                         message: 'Username is required'
@@ -33,7 +33,7 @@ export const YouTubeForm = () => {
 
             <div className="form-control">
                 <label htmlFor="email">Email</label>
-                <input type="email" id='email' {...register('email', {
+                <input type="email" placeholder="Email" id='email' {...register('email', {
                     required: 'Email is required',
                     pattern: {
                         value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
@@ -44,7 +44,7 @@ export const YouTubeForm = () => {
             </div>
             <div className="form-control">
                 <label htmlFor="channel">Channel</label>
-                <input type="text" id='channel' {...register('channel', { required: 'Channel is required'})} />
+                <input type="text" placeholder="Channel" id='channel' {...register('channel', { required: 'Channel is required'})} />
                 <p className="error">{errors.channel?.message}</p>
             </div>
 
