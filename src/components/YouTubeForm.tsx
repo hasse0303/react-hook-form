@@ -37,7 +37,7 @@ export const YouTubeForm = () => {
             }
         }
     });
-    const { register, control, handleSubmit, formState, watch, getValues } = form;
+    const { register, control, handleSubmit, formState, watch, getValues, setValue } = form;
     const { errors } = formState;
 
     const { fields, append, remove } = useFieldArray({
@@ -55,6 +55,14 @@ export const YouTubeForm = () => {
         console.log(getValues('social.facebook'));
         console.log(getValues(['username', 'channel']));
         
+    }
+
+    const handleSetValue = () => {
+        setValue('username', '', {
+            shouldDirty: true,
+            shouldTouch: true,
+            shouldValidate: true
+        })
     }
 
     useEffect(() => {
@@ -177,6 +185,7 @@ export const YouTubeForm = () => {
             </div>
             <button>Submit</button>
             <button type="button" onClick={handleGetValues}>Get value</button>
+            <button type="button" onClick={handleSetValue}>Set value</button>
         </form>
         <DevTool control={control}/>
     </div>
