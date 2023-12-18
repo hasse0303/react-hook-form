@@ -1,6 +1,6 @@
 import { DevTool } from "@hookform/devtools";
 import { useEffect } from "react";
-import { useFieldArray, useForm } from "react-hook-form";
+import { FieldErrors, useFieldArray, useForm } from "react-hook-form";
 
 type FormValue = {
     username: string,
@@ -51,6 +51,10 @@ export const YouTubeForm = () => {
         
     }
 
+    const onError = (errors: FieldErrors) => {
+        console.log('Error', errors); 
+    }
+
     const handleGetValues = () => {
         console.log(getValues());
         console.log(getValues('social.facebook'));
@@ -77,7 +81,7 @@ export const YouTubeForm = () => {
   return (
     <div>
         {/* <pre>{JSON.stringify(formValue)}</pre> */}
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit, onError)}>
             <div className="form-control">
                 <label htmlFor="username">Username</label>
                 <input type="text" placeholder="Username" id='username' {...register('username', {
