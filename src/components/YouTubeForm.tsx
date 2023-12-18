@@ -4,7 +4,11 @@ import { useForm } from "react-hook-form";
 type FormValue = {
     username: string,
     email: string,
-    channel: string
+    channel: string,
+    social: {
+        twitter: string,
+        facebook: string
+    }
 }
 
 export const YouTubeForm = () => {
@@ -15,8 +19,12 @@ export const YouTubeForm = () => {
             const data = await response.json();
             return {
                 username: data.username,
-                email: data.email,
-                channel: 'Has Has'
+                email: '',
+                channel: 'Has Has',
+                social: {
+                    twitter: '',
+                    facebook: ''
+                }
             }
         }
     });
@@ -68,6 +76,16 @@ export const YouTubeForm = () => {
                 <label htmlFor="channel">Channel</label>
                 <input type="text" placeholder="Channel" id='channel' {...register('channel', { required: 'Channel is required'})} />
                 <p className="error">{errors.channel?.message}</p>
+            </div>
+
+            <div className="form-control">
+                <label htmlFor="twitter">Twitter</label>
+                <input type="text" placeholder="Twitter" id='twitter' {...register('social.twitter')} />
+            </div>
+
+            <div className="form-control">
+                <label htmlFor="facebook">Facebook</label>
+                <input type="text" placeholder="Facebook" id='facebook' {...register('social.facebook')} />
             </div>
 
             <button>Submit</button>
