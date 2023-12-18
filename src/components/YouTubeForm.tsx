@@ -35,7 +35,8 @@ export const YouTubeForm = () => {
                 age: 0,
                 dob: new Date()
             }
-        }
+        },
+        mode: 'all' // onSubmit, onBlur, onChange, onTouched
     });
     const { register, control, handleSubmit, formState, watch, getValues, setValue, reset } = form;
     const { errors, touchedFields, dirtyFields, isDirty, isValid, isSubmitting, isSubmitted, isSubmitSuccessful, submitCount  } = formState;
