@@ -38,7 +38,7 @@ export const YouTubeForm = () => {
         },
         mode: 'all' // onSubmit, onBlur, onChange, onTouched
     });
-    const { register, control, handleSubmit, formState, watch, getValues, setValue, reset } = form;
+    const { register, control, handleSubmit, formState, watch, getValues, setValue, reset, trigger } = form;
     const { errors, touchedFields, dirtyFields, isDirty, isValid, isSubmitting, isSubmitted, isSubmitSuccessful, submitCount  } = formState;
     console.log(touchedFields, dirtyFields, isDirty, isValid);
     console.log({isSubmitting, isSubmitted, isSubmitSuccessful, submitCount});
@@ -212,6 +212,7 @@ export const YouTubeForm = () => {
             <button type="button" onClick={() => {reset()}}>Reset</button>
             <button type="button" onClick={handleGetValues}>Get value</button>
             <button type="button" onClick={handleSetValue}>Set value</button>
+            <button type="button" onClick={() => trigger('channel')}>Validate</button>
         </form>
         <DevTool control={control}/>
     </div>
