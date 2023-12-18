@@ -8,7 +8,8 @@ type FormValue = {
     social: {
         twitter: string,
         facebook: string
-    }
+    },
+    phoneNumbers: string[]
 }
 
 export const YouTubeForm = () => {
@@ -24,7 +25,8 @@ export const YouTubeForm = () => {
                 social: {
                     twitter: '',
                     facebook: ''
-                }
+                },
+                phoneNumbers: ['', '']
             }
         }
     });
@@ -88,6 +90,15 @@ export const YouTubeForm = () => {
                 <input type="text" placeholder="Facebook" id='facebook' {...register('social.facebook')} />
             </div>
 
+            <div className="form-control">
+                <label htmlFor="primary-phone">Primary Phone Number</label>
+                <input type="text" placeholder="Primary Phone Number" id='primary-phone' {...register('phoneNumbers.0')} />
+            </div>
+
+            <div className="form-control">
+                <label htmlFor="secondary-phone">Secondary Phone Number</label>
+                <input type="text" placeholder="Secondary Phone Number" id='secondary-phone' {...register('phoneNumbers.1')} />
+            </div>
             <button>Submit</button>
         </form>
         <DevTool control={control}/>
