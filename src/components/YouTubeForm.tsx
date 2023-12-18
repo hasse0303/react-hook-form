@@ -1,4 +1,5 @@
 import { DevTool } from "@hookform/devtools";
+import { useEffect } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 
 type FormValue = {
@@ -49,10 +50,17 @@ export const YouTubeForm = () => {
         
     }
 
-    const formValue = watch();
+    useEffect(() => {
+      const subscription = watch((value) => {
+        console.log(value);
+      })
+      return () => subscription.unsubscribe()
+    }, [watch])
+    
+    
   return (
     <div>
-        <pre>{JSON.stringify(formValue)}</pre>
+        {/* <pre>{JSON.stringify(formValue)}</pre> */}
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control">
                 <label htmlFor="username">Username</label>
