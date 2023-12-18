@@ -10,10 +10,14 @@ type FormValue = {
 export const YouTubeForm = () => {
 
     const form = useForm<FormValue>({
-        defaultValues:{
-            username: 'hashas',
-            email: 'hashas@gmail.com',
-            channel: 'Has Has'
+        defaultValues: async () => {
+            const response = await fetch('https://jsonplaceholder.typicode.com/users/2');
+            const data = await response.json();
+            return {
+                username: data.username,
+                email: data.email,
+                channel: 'Has Has'
+            }
         }
     });
     const { register, control, handleSubmit, formState } = form;
