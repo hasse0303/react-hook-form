@@ -30,3 +30,11 @@ input{
   font-size: 12px;
   text-align: left;
 }
+.d-flex-sb-ct {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.w-300 {
+  width: 300px;
+}

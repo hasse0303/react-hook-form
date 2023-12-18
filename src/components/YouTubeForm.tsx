@@ -1,5 +1,5 @@
 import { DevTool } from "@hookform/devtools";
-import { useForm } from "react-hook-form";
+import { useFieldArray, useForm } from "react-hook-form";
 
 type FormValue = {
     username: string,
@@ -9,7 +9,8 @@ type FormValue = {
         twitter: string,
         facebook: string
     },
-    phoneNumbers: string[]
+    phoneNumbers: string[],
+    phNumbers: { number: string}[]
 }
 
 export const YouTubeForm = () => {
@@ -26,12 +27,18 @@ export const YouTubeForm = () => {
                     twitter: '',
                     facebook: ''
                 },
-                phoneNumbers: ['', '']
+                phoneNumbers: ['', ''],
+                phNumbers: [{ number: '' }]
             }
         }
     });
     const { register, control, handleSubmit, formState } = form;
     const { errors } = formState;
+
+    const { fields, append, remove } = useFieldArray({
+        name: 'phNumbers',
+        control
+    })
 
     const onSubmit = (data: FormValue) => {
         console.log('Value', data);
@@ -98,6 +105,29 @@ export const YouTubeForm = () => {
             <div className="form-control">
                 <label htmlFor="secondary-phone">Secondary Phone Number</label>
                 <input type="text" placeholder="Secondary Phone Number" id='secondary-phone' {...register('phoneNumbers.1')} />
+            </div>
+
+            <div>
+                <div className="d-flex-sb-ct">
+                    <label>List of phone numbers</label>
+                    <button type="button" onClick={ () => append({number: ''})}>Add</button>
+                </div>
+                <div>
+                    {
+                        fields.map((field, index) => {
+                            return (
+                                <div className="form-control d-flex-sb-ct" key={field.id}>
+                                    <input className="w-300" type="text" {...register(`phNumbers.${index}.number` as const)}/>
+                                {
+                                    index > 0 && (
+                                        <button onClick={ () => remove(index)}>Remove</button>
+                                    )
+                                }
+                                </div>
+                            )
+                        })
+                    }
+                </div>
             </div>
             <button>Submit</button>
         </form>
