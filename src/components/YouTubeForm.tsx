@@ -36,7 +36,7 @@ export const YouTubeForm = () => {
             }
         }
     });
-    const { register, control, handleSubmit, formState } = form;
+    const { register, control, handleSubmit, formState, watch } = form;
     const { errors } = formState;
 
     const { fields, append, remove } = useFieldArray({
@@ -48,8 +48,11 @@ export const YouTubeForm = () => {
         console.log('Value', data);
         
     }
+
+    const formValue = watch();
   return (
     <div>
+        <pre>{JSON.stringify(formValue)}</pre>
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control">
                 <label htmlFor="username">Username</label>
