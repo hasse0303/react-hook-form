@@ -25,7 +25,7 @@ export const YouTubeForm = () => {
             return {
                 username: data.username,
                 email: '',
-                channel: 'Has Has',
+                channel: '',
                 social: {
                     twitter: '',
                     facebook: ''
@@ -144,12 +144,18 @@ export const YouTubeForm = () => {
 
             <div className="form-control">
                 <label htmlFor="twitter">Twitter</label>
-                <input type="text" placeholder="Twitter" id='twitter' {...register('social.twitter')} />
+                <input type="text" placeholder="Twitter" id='twitter' {...register('social.twitter', {
+                    disabled: watch('channel') === '',
+                    required: 'Twitter is required'
+                })} />
             </div>
 
             <div className="form-control">
                 <label htmlFor="facebook">Facebook</label>
-                <input type="text" placeholder="Facebook" id='facebook' {...register('social.facebook')} />
+                <input type="text" placeholder="Facebook" id='facebook' {...register('social.facebook', {
+                    disabled: watch('channel') === '',
+                    required: 'Facebook is required'
+                })} />
             </div>
 
             <div className="form-control">
