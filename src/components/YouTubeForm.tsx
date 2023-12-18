@@ -11,7 +11,8 @@ type FormValue = {
     },
     phoneNumbers: string[],
     phNumbers: { number: string}[],
-    age: number
+    age: number,
+    dob: Date
 }
 
 export const YouTubeForm = () => {
@@ -30,7 +31,8 @@ export const YouTubeForm = () => {
                 },
                 phoneNumbers: ['', ''],
                 phNumbers: [{ number: '' }],
-                age: 0
+                age: 0,
+                dob: new Date()
             }
         }
     });
@@ -69,7 +71,19 @@ export const YouTubeForm = () => {
                         message: 'Age is required'
                     }
                 })} />
-                <p className="error">{errors.username?.message}</p>
+                <p className="error">{errors.age?.message}</p>
+            </div>
+            
+            <div className="form-control">
+                <label htmlFor="dob">Date of birth</label>
+                <input type="date" placeholder="Date of birth" id='dob' {...register('dob', {
+                    valueAsDate: true,
+                    required: {
+                        value: true,
+                        message: 'Date of birth is required'
+                    }
+                })} />
+                <p className="error">{errors.dob?.message}</p>
             </div>
 
             <div className="form-control">
