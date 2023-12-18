@@ -52,12 +52,12 @@ export const YouTubeForm = () => {
                     validate: {
                         isAdmin: (fieldValue) => {
                             return (
-                                fieldValue === 'admin@gmail.com' && 'Enter a different email address'
+                                fieldValue !== 'admin@gmail.com' || 'Enter a different email address'
                             )
                         },
                         isBlackListed: (fieldValue) => {
                             return (
-                                fieldValue.endsWith('baddog.com') && 'This domain is not supported'
+                                !fieldValue.endsWith('baddog.com') || 'This domain is not supported'
                             )
                         }
                     }
