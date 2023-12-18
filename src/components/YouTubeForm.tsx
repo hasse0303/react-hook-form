@@ -10,7 +10,8 @@ type FormValue = {
         facebook: string
     },
     phoneNumbers: string[],
-    phNumbers: { number: string}[]
+    phNumbers: { number: string}[],
+    age: number
 }
 
 export const YouTubeForm = () => {
@@ -28,7 +29,8 @@ export const YouTubeForm = () => {
                     facebook: ''
                 },
                 phoneNumbers: ['', ''],
-                phNumbers: [{ number: '' }]
+                phNumbers: [{ number: '' }],
+                age: 0
             }
         }
     });
@@ -53,6 +55,18 @@ export const YouTubeForm = () => {
                     required: {
                         value: true,
                         message: 'Username is required'
+                    }
+                })} />
+                <p className="error">{errors.username?.message}</p>
+            </div>
+
+            <div className="form-control">
+                <label htmlFor="age">Age</label>
+                <input type="text" placeholder="Age" id='age' {...register('age', {
+                    valueAsNumber: true,
+                    required: {
+                        value: true,
+                        message: 'Age is required'
                     }
                 })} />
                 <p className="error">{errors.username?.message}</p>
