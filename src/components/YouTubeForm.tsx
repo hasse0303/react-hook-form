@@ -9,7 +9,13 @@ type FormValue = {
 
 export const YouTubeForm = () => {
 
-    const form = useForm<FormValue>();
+    const form = useForm<FormValue>({
+        defaultValues:{
+            username: 'hashas',
+            email: 'hashas@gmail.com',
+            channel: 'Has Has'
+        }
+    });
     const { register, control, handleSubmit, formState } = form;
     const { errors } = formState;
 
